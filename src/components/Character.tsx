@@ -10,7 +10,7 @@ export function Character({ character }: CharacterProps) {
 
       <div className="products_item_dscr">
         <p>Location: {character.location.name}</p>
-        <p>Secies: {character.species}</p>
+        <p>Species: {character.species}</p>
         <p>Gender: {character.gender}</p>
       </div>
     </div>
