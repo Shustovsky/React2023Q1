@@ -4,7 +4,7 @@ import { AboutPage } from './pages/AboutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Layout } from './components/Layout';
 
-export function App() {
+export function App(): JSX.Element {
   return (
     <>
       <Routes>

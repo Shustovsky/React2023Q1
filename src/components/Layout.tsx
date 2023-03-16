@@ -1,10 +1,13 @@
 import { NavLink, Link, Outlet } from 'react-router-dom';
-import React, { Component } from 'react';
-import { MouseEventHandler } from 'react';
+import React, { Component, MouseEventHandler } from 'react';
 import { LayoutState } from '../models';
 
-export class Layout extends Component<Record<string, unknown>, LayoutState> {
-  constructor(props: Record<string, unknown>) {
+type Props = {
+  [key: string]: never;
+};
+
+export class Layout extends Component<Props, LayoutState> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       currentPageName:
@@ -15,12 +18,14 @@ export class Layout extends Component<Record<string, unknown>, LayoutState> {
           : 'Page not found',
     };
   }
-  handleNavLinkClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+
+  private handleNavLinkClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
     const title = event.currentTarget.innerText;
     document.title = title + ' | Vite + React + TS';
     this.setState({ currentPageName: title });
   };
-  render() {
+
+  public render(): JSX.Element {
     const { currentPageName } = this.state;
     return (
       <>

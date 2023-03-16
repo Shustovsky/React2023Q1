@@ -16,20 +16,20 @@ export class Search extends React.Component<Props, SearchState> {
     this.changeHandler = this.changeHandler.bind(this);
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount(): void {
     localStorage.setItem('search', this.state.searchValue);
   }
 
-  submitHandler(e: React.FormEvent) {
+  private submitHandler(e: React.FormEvent): void {
     e.preventDefault();
     localStorage.setItem('search', this.state.searchValue);
   }
 
-  changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+  private changeHandler(event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({ searchValue: event.target.value });
   }
 
-  render() {
+  public render(): JSX.Element {
     return (
       <form className="search-form" onSubmit={this.submitHandler}>
         <input
@@ -40,7 +40,7 @@ export class Search extends React.Component<Props, SearchState> {
           onChange={this.changeHandler}
         />
         <button className="search-form_btn" type="submit">
-          <img src={searchImg} alt="" />
+          <img src={searchImg} alt="search" />
         </button>
       </form>
     );

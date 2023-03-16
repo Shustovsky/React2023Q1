@@ -12,12 +12,12 @@ export class HomePage extends Component<Record<string, unknown>, CharactersState
     };
   }
 
-  async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     const response = await axios.get<IResponse>('https://rickandmortyapi.com/api/character');
     this.setState({ characters: response.data.results });
   }
 
-  render() {
+  public render(): JSX.Element {
     const { characters } = this.state;
     return (
       <main className="main-home">

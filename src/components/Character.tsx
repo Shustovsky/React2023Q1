@@ -1,6 +1,6 @@
 import { CharacterProps } from '../models';
 
-export function Character({ character }: CharacterProps) {
+export function Character({ character }: CharacterProps): JSX.Element {
   return (
     <div className="products_item">
       <div>
