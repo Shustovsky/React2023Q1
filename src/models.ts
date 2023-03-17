@@ -38,4 +38,6 @@ export interface LayoutState {
 
 export interface CharactersState {
   characters: ICharacter[];
+  error?: string;
+  loading?: boolean;
 }

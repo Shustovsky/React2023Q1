@@ -3,7 +3,7 @@ import { SearchState } from '../models';
 import searchImg from '../assets/icons/icon-search.png';
 
 type Props = {
-  children?: React.ReactNode;
+  onSearch: (searchValue: string) => Promise<void>;
 };
 
 export class Search extends React.Component<Props, SearchState> {
@@ -20,8 +20,9 @@ export class Search extends React.Component<Props, SearchState> {
     localStorage.setItem('search', this.state.searchValue);
   }
 
-  private submitHandler(e: React.FormEvent): void {
+  private async submitHandler(e: React.FormEvent): Promise<void> {
     e.preventDefault();
+    await this.props.onSearch(this.state.searchValue);
     localStorage.setItem('search', this.state.searchValue);
   }
 
