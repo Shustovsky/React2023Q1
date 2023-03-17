@@ -15,11 +15,11 @@ export class HomePage extends Component<Record<string, unknown>, CharactersState
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  componentDidMount(): Promise<void> {
+  public componentDidMount(): Promise<void> {
     return this.fetchData(localStorage.getItem('search') || '');
   }
 
-  async fetchData(searchValue: string): Promise<void> {
+  public async fetchData(searchValue: string): Promise<void> {
     this.setState({
       loading: true,
       error: '',
@@ -41,11 +41,11 @@ export class HomePage extends Component<Record<string, unknown>, CharactersState
     }
   }
 
-  handleSearch(searchValue: string): Promise<void> {
+  private handleSearch(searchValue: string): Promise<void> {
     return this.fetchData(searchValue);
   }
 
-  render() {
+  public render(): JSX.Element {
     const { characters, error, loading } = this.state;
     return (
       <main className="main-home">
