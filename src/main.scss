@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    //outline: 1px solid red;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+    width: calc(100vw - 17px);
+    height: 30px;
+    display: flex;
+    gap: 10%;
+    padding: 0 30%;
+    justify-content: right;
+    align-items: center;
+    background-color: grey;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .active {
+        color: orange;
+        cursor: default;
+    }
+
+}
+
+.main-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form {
+    margin-top: 3%;
+    display: flex;
+
+    &_input {
+        border: none;
+        margin: 0 10px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    &_btn {
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: 1vh;
+    margin: 3%;
+
+    &_item {
+        max-width: 300px;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        gap: 10px;
+        cursor: pointer;
+
+        &_name {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1% 5%;
+            left: 50%;
+            bottom: 35%;
+            transform: translate(-50%, 50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: orange;
+        }
+
+        img {
+            object-fit: cover;
+            //width: 50%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            //vertical-align: middle;
+        }
+
+        &_dscr {
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+
+
