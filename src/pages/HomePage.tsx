@@ -50,8 +50,8 @@ export class HomePage extends Component<Record<string, unknown>, CharactersState
     return (
       <main className="main-home">
         <Search onSearch={this.handleSearch} />
-        {loading && <h1 className="error-message">{'Loading'}</h1>}
-        {error && <h1 className="error-message">{error}</h1>}
+        {loading && <h2 className="error-message">{'Loading'}</h2>}
+        {error && <h2 className="error-message">{error}</h2>}
         <section className="products">
           {characters.map((character) => (
             <Character character={character} key={character.id} />
