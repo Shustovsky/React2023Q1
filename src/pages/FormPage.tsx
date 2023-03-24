@@ -176,7 +176,7 @@ export class FormPage extends React.Component<unknown, FormPageState> {
           }, 4000);
         }
       );
-      // this.formRef.current?.reset();
+      this.formRef.current?.reset();
     }
   };
 
