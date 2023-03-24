@@ -1,0 +1,191 @@
+.modal {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background-color: white;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    max-width: 600px;
+    margin: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    color: #FE9013;
+    background: rgba(253, 253, 255, 0.52);
+
+    h2 {
+        flex-basis: 100%;
+    }
+
+    div {
+        margin: 5px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        border: 1px solid;
+        border-radius: 10px;
+
+        input, select {
+            background: none;
+            border-radius: 5px;
+            border: 1px solid;
+        }
+
+        label {
+            font-weight: bold;
+
+            textarea {
+                background: none;
+                border: 1px solid #FE9013;
+
+            }
+        }
+    }
+
+    button {
+        width: 100px;
+        height: 30px;
+        background: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        flex-basis: 100%;
+        transition: 0.5s all;
+        background: #FE9013;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+            background: #859d37;
+        }
+    }
+
+    .input_error {
+        padding: 0 5px;
+        font-weight: bold;
+        background: #ff7300;
+        border-radius: 5px;
+        color: white;
+        animation: pulsate 3s linear infinite;
+    }
+
+
+    @keyframes pulsate {
+        50% {
+            color: #f4b681;
+        }
+    }
+
+}
+
+.feedback {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    align-items: center;
+    width: 40%;
+    padding: 2%;
+    gap: 5%;
+
+    &_container {
+        width: 80vw;
+        margin-top: 1%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &_img {
+        grid-row: 1/5;
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        object-fit: cover;
+        justify-self: center;
+    }
+
+    &_name {
+        grid-column: 2/4;
+        font-weight: bold;
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &_birthday {
+        font-style: italic;
+        font-size: 14px;
+    }
+
+    &_rate {
+        &_bold {
+            font-weight: bold;
+        }
+    }
+
+    &_cute {
+    }
+
+    &_text {
+        grid-column: 1/-1;
+        overflow-y: scroll;
+        max-height: 80px;
+        margin-top: 1%;
+        border: 1px solid;
+        padding: 1%;
+    }
+
+
+}
+
+@media (max-width: 1000px) {
+    .feedback {
+        margin: 2%;
+        gap: 10px;
+        width: 100%;
+
+        &_container {
+            gap: 0;
+            width: auto;
+        }
+
+        &_text {
+            margin-top: 0;
+        }
+    }
+}
+
+
+
