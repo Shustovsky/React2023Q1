@@ -15,6 +15,8 @@ export class Layout extends Component<Props, LayoutState> {
           ? 'Home'
           : location.pathname === '/about'
           ? 'About us'
+          : location.pathname === '/form'
+          ? 'Form'
           : 'Page not found',
     };
   }
@@ -37,12 +39,17 @@ export class Layout extends Component<Props, LayoutState> {
           <NavLink to="/about" onClick={this.handleNavLinkClick}>
             About us
           </NavLink>
+          <NavLink to="/form" onClick={this.handleNavLinkClick}>
+            Form
+          </NavLink>
         </header>
 
         <Outlet />
 
         <footer>
+          ©2023
           <Link to="https://github.com/shustovsky/">Github</Link>
+          <Link to="https://rs.school/react/">RSSchool </Link>
         </footer>
       </>
     );
