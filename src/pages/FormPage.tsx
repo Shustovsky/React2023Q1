@@ -32,6 +32,7 @@ export class FormPage extends React.Component<unknown, FormPageState> {
     birthday: '',
     birthdayError: '',
     rate: '',
+    rateError: '',
     checkbox: false,
     checkboxError: '',
     cute: false,
@@ -73,6 +74,18 @@ export class FormPage extends React.Component<unknown, FormPageState> {
     }
 
     return birthday;
+  };
+
+  public handleRateChange = (): string | undefined => {
+    const rate = this.dropdown.current?.value;
+    if (rate === 'Choose') {
+      this.setState({ rateError: 'This field is required' });
+      this.valid = false;
+    } else {
+      this.setState({ rateError: '' });
+    }
+
+    return rate;
   };
 
   public handleCheckboxChange = (): boolean | undefined => {
@@ -134,7 +147,7 @@ export class FormPage extends React.Component<unknown, FormPageState> {
     this.valid = true;
     const name = this.handleNameChange();
     const birthday = this.handleBirthdayChange();
-    const rate = this.dropdown.current?.value;
+    const rate = this.handleRateChange();
     const checkbox = this.handleCheckboxChange();
     const cute = this.switcher.current?.checked;
     const gender = this.handleGenderChange();
@@ -160,6 +173,7 @@ export class FormPage extends React.Component<unknown, FormPageState> {
           birthday: '',
           birthdayError: '',
           rate: '',
+          rateError: '',
           checkbox: false,
           checkboxError: '',
           cute: false,
@@ -187,7 +201,7 @@ export class FormPage extends React.Component<unknown, FormPageState> {
           <h2>Please leave a rating for this site:</h2>
           <NameInput input={this.name} errorMessage={this.state.nameError} />
           <DateInput input={this.date} errorMessage={this.state.birthdayError} />
-          <DropdownInput input={this.dropdown} />
+          <DropdownInput input={this.dropdown} errorMessage={this.state.rateError} />
           <SwitcherInput input={this.switcher} />
           <RadioInput
             input={this.radioMale}

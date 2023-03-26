@@ -63,6 +63,7 @@ export interface FormPageState {
   birthday: string;
   birthdayError: string;
   rate: string;
+  rateError: string;
   checkbox: boolean;
   checkboxError: string;
   cute: boolean;
