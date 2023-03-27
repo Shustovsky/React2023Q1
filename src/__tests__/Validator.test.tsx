@@ -20,7 +20,7 @@ describe('Validator', () => {
 
   describe('validateDate', () => {
     test('input date is greater than current date', () => {
-      expect(validator.validateDate('2023-03-25')).toBe(true);
+      expect(validator.validateDate('2025-03-25')).toBe(true);
     });
 
     test('input date is less than or equal to current date', () => {
