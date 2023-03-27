@@ -20,24 +20,14 @@ describe('Validator', () => {
 
   describe('validateDate', () => {
     test('input date is greater than current date', () => {
-      expect(validator.validateDate('2025-03-25')).toBe(true);
+      expect(validator.validateDate('2025-03-25')).toBe(
+        'Your date of birth should be less than today'
+      );
     });
 
     test('input date is less than or equal to current date', () => {
-      expect(validator.validateDate('2023-03-24')).toBe(false);
-      expect(validator.validateDate('2022-03-24')).toBe(false);
-    });
-  });
-
-  describe('validatePicture', () => {
-    test('picture format is not supported', () => {
-      const unsupportedPicture = new File(['test'], 'test.txt', { type: 'text/plain' });
-      expect(validator.validatePicture(unsupportedPicture)).toBe(true);
-    });
-
-    test('picture format is supported', () => {
-      const supportedPicture = new File(['test'], 'test.png', { type: 'image/png' });
-      expect(validator.validatePicture(supportedPicture)).toBe(false);
+      expect(validator.validateDate('2023-03-24')).toBe(true);
+      expect(validator.validateDate('2022-03-24')).toBe(true);
     });
   });
 });

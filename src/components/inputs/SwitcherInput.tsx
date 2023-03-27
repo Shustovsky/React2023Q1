@@ -1,12 +1,14 @@
 import React from 'react';
-import { InputProps } from '../../models';
+import { NameInputProps } from '../../models';
 
-export function SwitcherInput(props: InputProps): JSX.Element {
+export const SwitcherInput: React.FC<NameInputProps> = ({ label, register }): JSX.Element => {
   return (
     <div>
-      <label htmlFor="switcher">I agree that I&apos;m cute:</label>
-      <input type="checkbox" id="switcher" ref={props.input} />
-      <label className="labelSwitcher" htmlFor="switcher"></label>
+      <label>
+        {label}
+        <input type="checkbox" id="switcher" {...register('cute')} />
+        <label className="labelSwitcher" htmlFor="switcher"></label>
+      </label>
     </div>
   );
-}
+};

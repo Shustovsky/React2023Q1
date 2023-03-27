@@ -1,12 +1,28 @@
 import React from 'react';
-import { InputProps } from '../../models';
+import { NameInputProps } from '../../models';
+import { Validator } from '../ValidationService';
 
-export function PictureInput(props: InputProps): JSX.Element {
+export const PictureInput: React.FC<NameInputProps> = ({
+  label,
+  register,
+  errors,
+}): JSX.Element => {
+  const validator = new Validator();
   return (
     <div>
-      <label htmlFor="profilePicture">Profile picture:</label>
-      <input type="file" id="profilePicture" ref={props.input} />
-      {props.errorMessage && <span className="input_error">{props.errorMessage}</span>}
+      <label>
+        {label}
+        <input
+          {...register('profilePicture', {
+            required: 'This field is required',
+            validate: validator.validatePicture,
+          })}
+          type="file"
+        />
+      </label>
+      {errors?.profilePicture && (
+        <span className="input_error">{`${errors?.profilePicture.message || 'Error!'}`}</span>
+      )}
     </div>
   );
-}
+};

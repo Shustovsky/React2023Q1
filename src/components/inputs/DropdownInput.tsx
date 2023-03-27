@@ -1,19 +1,31 @@
 import React from 'react';
-import { SelectProps } from '../../models';
+import { NameInputProps } from '../../models';
+import { Validator } from '../ValidationService';
 
-export function DropdownInput(props: SelectProps): JSX.Element {
+export const DropdownInput: React.FC<NameInputProps> = ({
+  label,
+  register,
+  errors,
+}): JSX.Element => {
+  const validator = new Validator();
   return (
     <div>
-      <label htmlFor="dropdown">Rate this site:</label>
-      <select id="dropdown" ref={props.input}>
-        <option value="Choose">Choose</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-      </select>
-      {props.errorMessage && <span className="input_error">{props.errorMessage}</span>}
+      <label>
+        {label}
+        <select
+          {...register('rate', {
+            validate: validator.validateRate,
+          })}
+        >
+          <option value="Choose">Choose</option>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
+      </label>
+      {errors?.rate && <span className="input_error">{`${errors?.rate.message || 'Error!'}`}</span>}
     </div>
   );
-}
+};

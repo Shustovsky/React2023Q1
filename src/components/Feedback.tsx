@@ -1,16 +1,23 @@
 import { FeedbackProps } from '../models';
+import { useState, useEffect } from 'react';
 import './feedback.scss';
 
 export function Feedback({ feedback }: FeedbackProps): JSX.Element {
+  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (feedback.profilePicture) {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        setImageUrl(fileReader.result as string);
+      };
+      fileReader.readAsDataURL(feedback.profilePicture[0]);
+    }
+  }, [feedback.profilePicture]);
+
   return (
     <div className="feedback">
-      {feedback.profilePicture && (
-        <img
-          className="feedback_img"
-          src={URL.createObjectURL(feedback.profilePicture)}
-          alt="Profile"
-        />
-      )}
+      {imageUrl && <img className="feedback_img" src={imageUrl} alt="Profile" />}
       <div className="feedback_name">Name: {feedback.name}</div>
       <div className="feedback_rate">
         Rate: <span className="feedback_rate_bold">{feedback.rate}</span>

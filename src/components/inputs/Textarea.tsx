@@ -1,20 +1,23 @@
 import React from 'react';
-import { TextareaProps } from '../../models';
+import { NameInputProps } from '../../models';
 
-export function Textarea(props: TextareaProps): JSX.Element {
+export const Textarea: React.FC<NameInputProps> = ({ label, register, errors }): JSX.Element => {
   return (
     <div>
       <label>
-        {`Please tell me what you liked or didn't like on this site:`}
-        {props.errorMessage && <span className="input_error">{props.errorMessage}</span>}
+        {label}
         <textarea
+          {...register('text', {
+            required: 'This field is required',
+            minLength: { value: 10, message: 'Text should be at least 10 characters' },
+          })}
           name="text"
-          ref={props.input}
           rows={4}
           cols={30}
           placeholder="Write here..."
         ></textarea>
       </label>
+      {errors?.text && <span className="input_error">{`${errors?.text.message || 'Error!'}`}</span>}
     </div>
   );
-}
+};

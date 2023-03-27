@@ -1,18 +1,30 @@
 import React from 'react';
-import { InputProps } from '../../models';
+import { NameInputProps } from '../../models';
 
-export function RadioInput(props: InputProps): JSX.Element {
+export const RadioInput: React.FC<NameInputProps> = ({ register, errors }): JSX.Element => {
   return (
     <div>
       <label>
-        <input type="radio" name="gender" value="Male" ref={props.input} />
+        <input
+          {...register('gender', { required: 'This field is required' })}
+          type="radio"
+          name="gender"
+          value="Male"
+        />
         Male
       </label>
       <label>
-        <input type="radio" name="gender" value="Female" ref={props.input2} />
+        <input
+          {...register('gender', { required: 'This field is required' })}
+          type="radio"
+          name="gender"
+          value="Female"
+        />
         Female
       </label>
-      {props.errorMessage && <span className="input_error">{props.errorMessage}</span>}
+      {errors?.gender && (
+        <span className="input_error">{`${errors?.gender.message || 'Error!'}`}</span>
+      )}
     </div>
   );
-}
+};

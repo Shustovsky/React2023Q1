@@ -1,3 +1,5 @@
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
+
 export interface ICharacter {
   id: number;
   name: string;
@@ -43,14 +45,14 @@ export interface CharactersState {
 }
 
 export interface IFeedback {
-  name: string | undefined;
-  birthday: string | undefined;
-  rate: string | undefined;
-  checkbox: boolean | undefined;
-  cute: boolean | undefined;
-  gender: string | undefined;
-  text: string | undefined;
-  profilePicture?: File;
+  name: string;
+  birthday: string;
+  rate: string;
+  gender: string;
+  text: string;
+  profilePicture: FileList;
+  cute: boolean;
+  checkbox: boolean;
 }
 
 export interface FeedbackProps {
@@ -96,4 +98,10 @@ export interface TextareaProps {
 export interface ModalProps {
   show: boolean;
   onClose: () => void;
+}
+
+export interface NameInputProps {
+  label?: string;
+  register: UseFormRegister<IFeedback>;
+  errors?: FieldErrors<IFeedback>;
 }

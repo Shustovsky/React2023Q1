@@ -1,12 +1,24 @@
 import React from 'react';
-import { InputProps } from '../../models';
+import { NameInputProps } from '../../models';
+import { Validator } from '../ValidationService';
 
-export function DateInput(props: InputProps): JSX.Element {
+export const DateInput: React.FC<NameInputProps> = ({ label, register, errors }): JSX.Element => {
+  const validator = new Validator();
   return (
     <div>
-      <label htmlFor="date">Birthday:</label>
-      <input type="date" id="date" ref={props.input} />
-      {props.errorMessage && <span className="input_error">{props.errorMessage}</span>}
+      <label>
+        {label}
+        <input
+          type="date"
+          {...register('birthday', {
+            required: 'This field is required',
+            validate: validator.validateDate,
+          })}
+        />
+      </label>
+      {errors?.birthday && (
+        <span className="input_error">{`${errors?.birthday.message || 'Error!'}`}</span>
+      )}
     </div>
   );
-}
+};
