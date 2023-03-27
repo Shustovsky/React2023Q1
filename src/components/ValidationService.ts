@@ -1,10 +1,4 @@
 export class Validator {
-  private readonly MIN_CHARS = 5;
-
-  public validateText(text: string): boolean {
-    return text.length < this.MIN_CHARS;
-  }
-
   public validateDate(date: string): string | true {
     const currentDate = new Date();
     const inputDate = new Date(date);
