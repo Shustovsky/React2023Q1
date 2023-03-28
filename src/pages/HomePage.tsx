@@ -4,7 +4,7 @@ import { ICharacter, IResponse } from '../models';
 import { Character } from '../components/Character';
 import { Search } from '../components/Search';
 
-export function HomePage() {
+export function HomePage(): JSX.Element {
   const [characters, setCharacters] = useState<ICharacter[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -25,6 +25,7 @@ export function HomePage() {
       setCharacters(response.data.results);
     } catch (error) {
       setError('Unfortunately, try changing the search parameter');
+      setCharacters([]);
     } finally {
       setLoading(false);
     }
