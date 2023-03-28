@@ -1,57 +1,53 @@
-import { NavLink, Link, Outlet } from 'react-router-dom';
-import React, { Component, MouseEventHandler } from 'react';
-import { LayoutState } from '../models';
+import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 
-type Props = {
-  [key: string]: never;
-};
+export function Layout(): JSX.Element {
+  const location = useLocation();
+  const [currentPageName, setCurrentPageName] = useState<string>();
 
-export class Layout extends Component<Props, LayoutState> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      currentPageName:
-        location.pathname === '/'
-          ? 'Home'
-          : location.pathname === '/about'
-          ? 'About us'
-          : location.pathname === '/form'
-          ? 'Form'
-          : 'Page not found',
-    };
-  }
+  useEffect(() => {
+    setCurrentPageName(() => {
+      switch (location.pathname) {
+        case '/':
+          return 'Home';
+        case '/about':
+          return 'About us';
+        case '/form':
+          return 'Form';
+        default:
+          return 'Page not found';
+      }
+    });
+  }, [location.pathname]);
 
-  private handleNavLinkClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+  const handleNavLinkClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
     const title = event.currentTarget.innerText;
-    document.title = title + ' | Vite + React + TS';
-    this.setState({ currentPageName: title });
+    document.title = title + ' | The Rick and Morty';
+    setCurrentPageName(title);
   };
 
-  public render(): JSX.Element {
-    const { currentPageName } = this.state;
-    return (
-      <>
-        <header className="header">
-          <h1>{currentPageName}</h1>
-          <NavLink to="/" onClick={this.handleNavLinkClick}>
-            Home
-          </NavLink>
-          <NavLink to="/about" onClick={this.handleNavLinkClick}>
-            About us
-          </NavLink>
-          <NavLink to="/form" onClick={this.handleNavLinkClick}>
-            Form
-          </NavLink>
-        </header>
+  return (
+    <>
+      <header className="header">
+        <h1>{currentPageName}</h1>
+        <NavLink to="/" onClick={handleNavLinkClick}>
+          Home
+        </NavLink>
+        <NavLink to="/about" onClick={handleNavLinkClick}>
+          About us
+        </NavLink>
+        <NavLink to="/form" onClick={handleNavLinkClick}>
+          Form
+        </NavLink>
+      </header>
 
-        <Outlet />
+      <Outlet />
 
-        <footer>
-          ©2023
-          <Link to="https://github.com/shustovsky/">Github</Link>
-          <Link to="https://rs.school/react/">RSSchool </Link>
-        </footer>
-      </>
-    );
-  }
+      <footer>
+        ©2023
+        <Link to="https://github.com/shustovsky/">Github</Link>
+        <Link to="https://rs.school/react/">RSSchool </Link>
+      </footer>
+    </>
+  );
 }
