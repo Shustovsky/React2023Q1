@@ -1,6 +1,12 @@
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 
+enum PageName {
+  HOME = '/',
+  ABOUT = '/about',
+  FORM = '/form',
+}
+
 export function Layout(): JSX.Element {
   const location = useLocation();
   const [currentPageName, setCurrentPageName] = useState<string>();
@@ -8,11 +14,11 @@ export function Layout(): JSX.Element {
   useEffect(() => {
     setCurrentPageName(() => {
       switch (location.pathname) {
-        case '/':
+        case PageName.HOME:
           return 'Home';
-        case '/about':
+        case PageName.ABOUT:
           return 'About us';
-        case '/form':
+        case PageName.FORM:
           return 'Form';
         default:
           return 'Page not found';
