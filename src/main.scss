@@ -87,6 +87,10 @@ footer {
         cursor: pointer;
         border: none;
         background: none;
+        flex-basis: 0;
+        &:hover{
+            background: none;
+        }
     }
 }
 
