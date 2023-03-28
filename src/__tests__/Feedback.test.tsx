@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { IFeedback } from '../models';
 import { Feedback } from '../components/Feedback';
+import { vitest } from 'vitest';
 
 describe('Feedback component', () => {
   const file = new File(['file contents'], 'test.png', { type: 'image/png' });
@@ -22,6 +23,7 @@ describe('Feedback component', () => {
   };
 
   test('renders feedback correctly', () => {
+    window.URL.createObjectURL = vitest.fn();
     render(<Feedback feedback={testFeedback} />);
 
     expect(screen.getByText(`Name: ${testFeedback.name!}`)).toBeInTheDocument();
