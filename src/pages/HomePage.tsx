@@ -1,63 +1,49 @@
 import axios from 'axios';
-import { Component } from 'react';
-import { CharactersState, IResponse } from '../models';
+import { useEffect, useState } from 'react';
+import { ICharacter, IResponse } from '../models';
 import { Character } from '../components/Character';
 import { Search } from '../components/Search';
 
-export class HomePage extends Component<Record<string, unknown>, CharactersState> {
-  constructor(props: Record<string, unknown>) {
-    super(props);
-    this.state = {
-      characters: [],
-      loading: false,
-      error: '',
-    };
-    this.handleSearch = this.handleSearch.bind(this);
-  }
+export function HomePage() {
+  const [characters, setCharacters] = useState<ICharacter[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
-  public componentDidMount(): Promise<void> {
-    return this.fetchData(localStorage.getItem('search') || '');
-  }
+  useEffect(() => {
+    const searchValue = localStorage.getItem('search') || '';
+    fetchData(searchValue);
+  }, []);
 
-  public async fetchData(searchValue: string): Promise<void> {
-    this.setState({
-      loading: true,
-      error: '',
-    });
+  const fetchData = async (searchValue: string): Promise<void> => {
+    setLoading(true);
+    setError('');
+
     try {
       const response = await axios.get<IResponse>(
         `https://rickandmortyapi.com/api/character/?name=${searchValue}`
       );
-      this.setState({
-        characters: response.data.results,
-        loading: false,
-      });
+      setCharacters(response.data.results);
     } catch (error) {
-      this.setState({
-        characters: [],
-        loading: false,
-        error: 'Unfortunately, try changing the search parameter',
-      });
+      setError('Unfortunately, try changing the search parameter');
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
-  private handleSearch(searchValue: string): Promise<void> {
-    return this.fetchData(searchValue);
-  }
+  const handleSearch = (searchValue: string): Promise<void> => {
+    return fetchData(searchValue);
+  };
 
-  public render(): JSX.Element {
-    const { characters, error, loading } = this.state;
-    return (
-      <main className="main-home">
-        <Search onSearch={this.handleSearch} />
-        {loading && <h2 className="error-message">{'Loading'}</h2>}
-        {error && <h2 className="error-message">{error}</h2>}
-        <section className="products">
-          {characters.map((character) => (
-            <Character character={character} key={character.id} />
-          ))}
-        </section>
-      </main>
-    );
-  }
+  return (
+    <main className="main-home">
+      <Search onSearch={handleSearch} />
+      {loading && <h2 className="error-message">{'Loading'}</h2>}
+      {error && <h2 className="error-message">{error}</h2>}
+      <section className="products">
+        {characters.map((character) => (
+          <Character character={character} key={character.id} />
+        ))}
+      </section>
+    </main>
+  );
 }
