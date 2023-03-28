@@ -23,6 +23,7 @@ export function FormPage() {
     reset,
   } = useForm<IFeedback>({
     mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
   const onSubmit: SubmitHandler<IFeedback> = (data) => {
@@ -43,7 +44,7 @@ export function FormPage() {
       setShowFeedbackModal(false);
     }, 4000);
 
-    // reset();
+    reset();
   };
 
   return (
