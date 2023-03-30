@@ -4,10 +4,10 @@ import './feedback.scss';
 export function Feedback({ feedback }: FeedbackProps): JSX.Element {
   return (
     <div className="feedback">
-      {feedback.profilePicture && (
+      {feedback.profilePicture[0] && (
         <img
           className="feedback_img"
-          src={URL.createObjectURL(feedback.profilePicture)}
+          src={URL.createObjectURL(feedback.profilePicture[0])}
           alt="Profile"
         />
       )}

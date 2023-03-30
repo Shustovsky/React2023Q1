@@ -1,12 +1,19 @@
 import React from 'react';
-import { InputProps } from '../../models';
+import { NameInputProps } from '../../models';
 
-export function NameInput(props: InputProps): JSX.Element {
+export const NameInput: React.FC<NameInputProps> = ({ label, register, errors }): JSX.Element => {
   return (
     <div>
-      <label htmlFor="name">Your name:</label>
-      <input type="text" id="name" ref={props.input} />
-      {props.errorMessage && <span className="input_error">{props.errorMessage}</span>}
+      <label>
+        {label}
+        <input
+          {...register('name', {
+            required: 'This field is required',
+            minLength: { value: 5, message: 'Name should be at least 5 characters' },
+          })}
+        />
+      </label>
+      {errors?.name && <span className="input_error">{`${errors?.name.message || 'Error!'}`}</span>}
     </div>
   );
-}
+};
