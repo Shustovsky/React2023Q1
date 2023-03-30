@@ -33,7 +33,7 @@ export function FormPage() {
       rate: data.rate,
       gender: data.gender,
       text: data.text,
-      profilePicture: data.profilePicture,
+      profilePicture: { ...data.profilePicture },
       cute: data.cute,
       checkbox: false,
     };
