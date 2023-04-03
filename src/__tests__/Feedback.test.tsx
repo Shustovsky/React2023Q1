@@ -12,6 +12,7 @@ describe('Feedback component', () => {
   } as unknown as FileList;
 
   const testFeedback: IFeedback = {
+    id: '278',
     name: 'Sacha cha cha',
     birthday: '25.04.1993',
     rate: '5',

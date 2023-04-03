@@ -28,6 +28,7 @@ export function FormPage() {
 
   const onSubmit: SubmitHandler<IFeedback> = (data) => {
     const newFeedback = {
+      id: data.id,
       name: data.name,
       birthday: data.birthday,
       rate: data.rate,
@@ -72,7 +73,7 @@ export function FormPage() {
       </form>
       <section className="feedback_container">
         {feedbackList &&
-          feedbackList.map((feedback, index) => <Feedback feedback={feedback} key={index} />)}
+          feedbackList.map((feedback) => <Feedback feedback={feedback} key={feedback.id} />)}
       </section>
       {showFeedbackModal && (
         <Modal

@@ -31,6 +31,7 @@ export interface CharacterProps {
 }
 
 export interface IFeedback {
+  id: string;
   name: string;
   birthday: string;
   rate: string;
