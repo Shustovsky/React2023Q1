@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Feedback } from '../components/Feedback';
-import { Modal } from '../components/Modal';
+import { FeedbackModal } from '../components/FeedbackModal';
 import { IFeedback } from '../models';
 import { NameInput } from '../components/inputs/NameInput';
 import { DateInput } from '../components/inputs/DateInput';
@@ -76,7 +76,7 @@ export function FormPage() {
           feedbackList.map((feedback) => <Feedback feedback={feedback} key={feedback.id} />)}
       </section>
       {showFeedbackModal && (
-        <Modal
+        <FeedbackModal
           show={showFeedbackModal}
           onClose={() => {
             setShowFeedbackModal(false);
