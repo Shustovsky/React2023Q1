@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import { ModalProps } from '../models';
-import { Modal } from '../components/Modal';
+import { FeedbackModalProps } from '../models';
+import { FeedbackModal } from '../components/FeedbackModal';
 
 describe('Modal component', () => {
-  const testModal: ModalProps = {
+  const testModal: FeedbackModalProps = {
     show: true,
     onClose: () => {},
   };
 
   test('renders modal correctly', () => {
-    render(<Modal show={testModal.show} onClose={testModal.onClose} />);
+    render(<FeedbackModal show={testModal.show} onClose={testModal.onClose} />);
 
     expect(screen.getByText(`Review successfully added`)).toBeInTheDocument();
   });

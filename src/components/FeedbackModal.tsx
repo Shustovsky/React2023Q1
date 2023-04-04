@@ -1,6 +1,6 @@
-import { ModalProps } from '../models';
+import { FeedbackModalProps } from '../models';
 
-export function Modal(props: ModalProps): JSX.Element {
+export function FeedbackModal(props: FeedbackModalProps): JSX.Element {
   const { show, onClose } = props;
 
   const handleClose = (): void => {
