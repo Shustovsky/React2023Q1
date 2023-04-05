@@ -1,0 +1,28 @@
+.character-modal {
+    &_wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    padding: 2% 3%;
+    border-radius: 10px;
+    background: rgba(254, 210, 144, 0.9);
+}
+
+@media (max-width: 700px) {
+    .character-modal {
+       width: 70vw;
+        padding: 7%;
+    }
+
+}

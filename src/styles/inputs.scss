@@ -1,0 +1,41 @@
+#switcher {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.labelSwitcher {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 25px;
+    background: grey;
+    border-radius: 100px;
+}
+
+.labelSwitcher:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 23px;
+    height: 23px;
+    background: #fff;
+    border-radius: 23px;
+    transition: 0.3s;
+}
+
+#switcher:checked + .labelSwitcher {
+    background: #bada55;
+}
+
+#switcher:checked + .labelSwitcher:after {
+    left: calc(100% - 1px);
+    transform: translateX(-100%);
+}
+
+.labelSwitcher:active:after {
+    width: 33px;
+}

@@ -1,0 +1,77 @@
+form {
+    max-width: 600px;
+    margin: 3px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: #FE9013;
+    background: rgba(253, 253, 255, 0.52);
+
+    h2 {
+        flex-basis: 100%;
+    }
+
+    div {
+        margin: 5px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        border: 1px solid;
+        border-radius: 10px;
+
+        input, select {
+            background: none;
+            border-radius: 5px;
+            border: 1px solid;
+        }
+
+        label {
+            font-weight: bold;
+
+            textarea {
+                background: none;
+                border: 1px solid #FE9013;
+
+            }
+        }
+    }
+
+    button {
+        width: 100px;
+        height: 30px;
+        flex-basis: 100%;
+        background: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        transition: 0.5s all;
+        background: #FE9013;
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+            background: #859d37;
+        }
+    }
+
+    .input_error {
+        padding: 0 5px;
+        font-weight: bold;
+        background: #ff7300;
+        border-radius: 5px;
+        color: white;
+        animation: pulsate 3s linear infinite;
+    }
+
+    @keyframes pulsate {
+        50% {
+            color: #f4b681;
+        }
+    }
+
+}
