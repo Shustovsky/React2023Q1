@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { ICharacter } from '../models';
+import { Modal } from '../components/Modal';
 import { Character } from '../components/Character';
 
-describe('CharacterMini component', () => {
+describe('Modal component', () => {
   const testCharacter: ICharacter = {
     id: 2,
     name: 'Morty Smith',
@@ -29,7 +30,11 @@ describe('CharacterMini component', () => {
   };
 
   test('renders character info correctly', () => {
-    render(<Character character={testCharacter} onClick={() => null} />);
+    render(
+      <Modal onClose={() => null}>
+        <Character character={testCharacter} />
+      </Modal>
+    );
 
     expect(screen.getByText(testCharacter.name)).toBeInTheDocument();
     expect(screen.getByAltText(testCharacter.name)).toBeInTheDocument();

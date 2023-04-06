@@ -1,4 +1,4 @@
-import { Validator } from '../components/ValidationService';
+import { Validator } from '../ValidationService';
 
 describe('Validator', () => {
   let validator: Validator;
