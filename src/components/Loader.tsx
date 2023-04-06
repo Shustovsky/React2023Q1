@@ -1,3 +1,5 @@
+import '../styles/loader.scss';
+
 export const Loader = () => {
-  return <h2 className="error-message">{'Loading'}</h2>;
+  return <span className="loader"></span>;
 };

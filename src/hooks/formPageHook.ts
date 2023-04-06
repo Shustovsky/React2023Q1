@@ -18,7 +18,7 @@ export const useFormPage = () => {
 
   const onSubmit: SubmitHandler<IFeedback> = (data) => {
     const newFeedback = {
-      id: data.id,
+      id: feedbackList.length + 1,
       name: data.name,
       birthday: data.birthday,
       rate: data.rate,
