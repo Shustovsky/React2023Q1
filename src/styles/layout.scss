@@ -1,0 +1,60 @@
+.header {
+    width: 100%;
+    height: 80px;
+    padding: 0 30%;
+    display: flex;
+    gap: 7%;
+    justify-content: right;
+    align-items: center;
+    background-color: black;
+    color: white;
+
+    a {
+        text-decoration: none;
+        color: white;
+        transition: all 1s;
+
+        &:hover {
+            color: orange;
+        }
+    }
+
+    .active {
+        color: orange;
+        cursor: default;
+    }
+
+    h1 {
+        padding: 1px 10px;
+        border: 1px solid grey;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+}
+
+footer {
+    width: 100%;
+    margin-top: 1%;
+    background: black;
+    text-align: center;
+    color: white;
+
+    a {
+        padding-left: 5%;
+        color: white;
+        text-decoration: none;
+        transition: all 1s;
+
+        &:hover {
+            color: orange;
+        }
+    }
+}
+
+@media (max-width: 860px) {
+    .header {
+        padding: 0 3%;
+    }
+
+}
+

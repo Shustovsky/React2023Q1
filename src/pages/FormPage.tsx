@@ -1,51 +1,28 @@
-import { useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { Feedback } from '../components/Feedback';
-import { Modal } from '../components/Modal';
-import { IFeedback } from '../models';
-import { NameInput } from '../components/inputs/NameInput';
-import { DateInput } from '../components/inputs/DateInput';
-import { DropdownInput } from '../components/inputs/DropdownInput';
-import { SwitcherInput } from '../components/inputs/SwitcherInput';
-import { RadioInput } from '../components/inputs/RadioInput';
-import { PictureInput } from '../components/inputs/PictureInput';
-import { Textarea } from '../components/inputs/Textarea';
-import { CheckboxInput } from '../components/inputs/CheckboxInput';
+import { ModalConfirm } from '../components/ModalConfirm';
+import { useFormPage } from '../hooks/formPageHook';
+import {
+  CheckboxInput,
+  DateInput,
+  DropdownInput,
+  NameInput,
+  PictureInput,
+  RadioInput,
+  SwitcherInput,
+  Textarea,
+} from '../components/Inputs';
+import '../styles/formPage.scss';
 
 export function FormPage() {
-  const [feedbackList, setFeedbackList] = useState<IFeedback[]>([]);
-  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
-
   const {
-    register,
-    formState: { errors },
     handleSubmit,
-    reset,
-  } = useForm<IFeedback>({
-    mode: 'onSubmit',
-    reValidateMode: 'onSubmit',
-  });
-
-  const onSubmit: SubmitHandler<IFeedback> = (data) => {
-    const newFeedback = {
-      name: data.name,
-      birthday: data.birthday,
-      rate: data.rate,
-      gender: data.gender,
-      text: data.text,
-      profilePicture: { ...data.profilePicture },
-      cute: data.cute,
-      checkbox: false,
-    };
-    setFeedbackList([...feedbackList, newFeedback]);
-
-    setShowFeedbackModal(true);
-    setTimeout(() => {
-      setShowFeedbackModal(false);
-    }, 4000);
-
-    reset();
-  };
+    onSubmit,
+    register,
+    errors,
+    feedbackList,
+    showFeedbackModal,
+    setShowFeedbackModal,
+  } = useFormPage();
 
   return (
     <>
@@ -72,11 +49,11 @@ export function FormPage() {
       </form>
       <section className="feedback_container">
         {feedbackList &&
-          feedbackList.map((feedback, index) => <Feedback feedback={feedback} key={index} />)}
+          feedbackList.map((feedback) => <Feedback feedback={feedback} key={feedback.id} />)}
       </section>
       {showFeedbackModal && (
-        <Modal
-          show={showFeedbackModal}
+        <ModalConfirm
+          label={'Review successfully added'}
           onClose={() => {
             setShowFeedbackModal(false);
           }}

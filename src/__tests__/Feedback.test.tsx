@@ -12,6 +12,7 @@ describe('Feedback component', () => {
   } as unknown as FileList;
 
   const testFeedback: IFeedback = {
+    id: 278,
     name: 'Sacha cha cha',
     birthday: '25.04.1993',
     rate: '5',
@@ -26,10 +27,10 @@ describe('Feedback component', () => {
     window.URL.createObjectURL = vitest.fn();
     render(<Feedback feedback={testFeedback} />);
 
-    expect(screen.getByText(`Name: ${testFeedback.name!}`)).toBeInTheDocument();
-    expect(screen.getByText(`Birthday: ${testFeedback.birthday!}`)).toBeInTheDocument();
+    expect(screen.getByText(`Name: ${testFeedback.name}`)).toBeInTheDocument();
+    expect(screen.getByText(`Birthday: ${testFeedback.birthday}`)).toBeInTheDocument();
     expect(screen.getByText(`You are really cute!`)).toBeInTheDocument();
-    expect(screen.getByText(`Gender: ${testFeedback.gender!}`)).toBeInTheDocument();
-    expect(screen.getByText(testFeedback.text!)).toBeInTheDocument();
+    expect(screen.getByText(`Gender: ${testFeedback.gender}`)).toBeInTheDocument();
+    expect(screen.getByText(testFeedback.text)).toBeInTheDocument();
   });
 });

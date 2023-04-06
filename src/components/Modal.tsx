@@ -1,24 +1,20 @@
+import '../styles/characterModal.scss';
 import { ModalProps } from '../models';
+import React from 'react';
 
-export function Modal(props: ModalProps): JSX.Element {
-  const { show, onClose } = props;
-
-  const handleClose = (): void => {
-    onClose();
+export const Modal = ({ children, onClose }: ModalProps): JSX.Element => {
+  const handleProductItemClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+    event.stopPropagation();
   };
 
   return (
-    <div>
-      {show && (
-        <div className="modal">
-          Review successfully added
-          <div className="modal-content">
-            <span className="close" onClick={handleClose}>
-              &times;
-            </span>
-          </div>
-        </div>
-      )}
+    <div className="character-modal_wrapper" onClick={onClose}>
+      <div className="character-modal" onClick={handleProductItemClick}>
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
+        {children}
+      </div>
     </div>
   );
-}
+};

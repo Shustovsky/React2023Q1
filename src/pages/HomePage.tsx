@@ -1,50 +1,36 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { ICharacter, IResponse } from '../models';
-import { Character } from '../components/Character';
+import { CharacterMini } from '../components/CharacterMini';
 import { Search } from '../components/Search';
+import { useHomePage } from '../hooks/homePageHook';
+import { Loader } from '../components/Loader';
+import { ErrorMessage } from '../components/ErrorMessage';
+import { Modal } from '../components/Modal';
+import { Character } from '../components/Character';
+import '../styles/homePage.scss';
 
 export function HomePage(): JSX.Element {
-  const [characters, setCharacters] = useState<ICharacter[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
-
-  useEffect(() => {
-    const searchValue = localStorage.getItem('search') || '';
-    fetchData(searchValue);
-  }, []);
-
-  const fetchData = async (searchValue: string): Promise<void> => {
-    setLoading(true);
-    setError('');
-
-    try {
-      const response = await axios.get<IResponse>(
-        `https://rickandmortyapi.com/api/character/?name=${searchValue}`
-      );
-      setCharacters(response.data.results);
-    } catch (error) {
-      setError('Unfortunately, try changing the search parameter');
-      setCharacters([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSearch = (searchValue: string): Promise<void> => {
-    return fetchData(searchValue);
-  };
+  const { characters, loading, error, handleSearch, character, setCharacter } = useHomePage();
 
   return (
-    <main className="main-home">
-      <Search onSearch={handleSearch} />
-      {loading && <h2 className="error-message">{'Loading'}</h2>}
-      {error && <h2 className="error-message">{error}</h2>}
-      <section className="products">
-        {characters.map((character) => (
-          <Character character={character} key={character.id} />
-        ))}
-      </section>
-    </main>
+    <>
+      <main className="main-home">
+        <Search onSearch={handleSearch} />
+        {loading && <Loader />}
+        {error && <ErrorMessage error={error} />}
+        <section className="character">
+          {characters.map((character) => (
+            <CharacterMini
+              character={character}
+              key={character.id}
+              onClick={() => setCharacter(character)}
+            />
+          ))}
+        </section>
+      </main>
+      {character && (
+        <Modal onClose={() => setCharacter(null)}>
+          <Character character={character} />
+        </Modal>
+      )}
+    </>
   );
 }
