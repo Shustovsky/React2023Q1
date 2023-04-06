@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ICharacter } from '../models';
-import { Character } from '../components/Character';
+import { Character } from '../pages/Home/components/Character';
 
 describe('CharacterMini component', () => {
   const testCharacter: ICharacter = {

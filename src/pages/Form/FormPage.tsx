@@ -1,6 +1,6 @@
-import { Feedback } from '../components/Feedback';
-import { ModalConfirm } from '../components/ModalConfirm';
-import { useFormPage } from '../hooks/formPageHook';
+import { useState } from 'react';
+import { Feedback } from './components/Feedback';
+import { ModalConfirm } from '../../components/ModalConfirm';
 import {
   CheckboxInput,
   DateInput,
@@ -10,19 +10,46 @@ import {
   RadioInput,
   SwitcherInput,
   Textarea,
-} from '../components/Inputs';
-import '../styles/formPage.scss';
+} from './components/Inputs';
+import { IFeedback } from '../../models';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import '../../styles/formPage.scss';
 
 export function FormPage() {
+  const [feedbackList, setFeedbackList] = useState<IFeedback[]>([]);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+
   const {
-    handleSubmit,
-    onSubmit,
     register,
-    errors,
-    feedbackList,
-    showFeedbackModal,
-    setShowFeedbackModal,
-  } = useFormPage();
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm<IFeedback>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
+
+  const onSubmit: SubmitHandler<IFeedback> = (data) => {
+    const newFeedback = {
+      id: feedbackList.length + 1,
+      name: data.name,
+      birthday: data.birthday,
+      rate: data.rate,
+      gender: data.gender,
+      text: data.text,
+      profilePicture: { ...data.profilePicture },
+      cute: data.cute,
+      checkbox: false,
+    };
+    setFeedbackList([...feedbackList, newFeedback]);
+
+    setShowFeedbackModal(true);
+    setTimeout(() => {
+      setShowFeedbackModal(false);
+    }, 4000);
+
+    reset();
+  };
 
   return (
     <>

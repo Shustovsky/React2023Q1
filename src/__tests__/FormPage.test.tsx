@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { FormPage } from '../pages/FormPage';
+import { FormPage } from '../pages/Form/FormPage';
 
 test('renders form page', () => {
   render(<FormPage />);

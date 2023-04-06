@@ -1,5 +1,5 @@
-import { CharacterProps } from '../models';
-import '../styles/character.scss';
+import { CharacterProps } from '../../../models';
+import '../../../styles/character.scss';
 
 export function CharacterMini({ character, onClick }: CharacterProps): JSX.Element {
   return (

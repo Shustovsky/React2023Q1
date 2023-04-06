@@ -1,7 +1,7 @@
 import React from 'react';
-import { NameInputProps } from '../models';
-import { Validator } from '../ValidationService';
-import '../styles/inputs.scss';
+import { NameInputProps } from '../../../models';
+import { Validator } from '../../../ValidationService';
+import '../../../styles/inputs.scss';
 
 export const CheckboxInput: React.FC<NameInputProps> = ({
   label,

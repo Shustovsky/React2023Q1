@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import searchImg from '../assets/icons/icon-search.png';
-import '../styles/search.scss';
+import searchImg from '../../../assets/icons/icon-search.png';
+import '../../../styles/search.scss';
 
-type Props = {
+interface SearchProps {
   onSearch: (searchValue: string) => Promise<void>;
-};
+}
 
-export function Search(props: Props) {
+export function Search({ onSearch }: SearchProps) {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('search') || '');
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export function Search(props: Props) {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    await props.onSearch(searchValue);
+    await onSearch(searchValue);
     localStorage.setItem('search', searchValue);
   };
 
