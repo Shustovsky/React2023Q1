@@ -7,7 +7,7 @@ import { Modal } from '../../components/Modal';
 import { Character } from './components/Character';
 import { useEffect, useState } from 'react';
 import { ICharacter, IResponse } from '../../models';
-import '../../styles/homePage.scss';
+import './components/HomePage.scss';
 
 export function HomePage(): JSX.Element {
   const [characters, setCharacters] = useState<ICharacter[]>([]);

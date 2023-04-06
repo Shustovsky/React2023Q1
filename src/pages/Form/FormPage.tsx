@@ -13,7 +13,7 @@ import {
 } from './components/Inputs';
 import { IFeedback } from '../../models';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import '../../styles/formPage.scss';
+import './components/FormPage.scss';
 
 export function FormPage() {
   const [feedbackList, setFeedbackList] = useState<IFeedback[]>([]);

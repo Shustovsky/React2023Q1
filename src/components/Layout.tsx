@@ -1,6 +1,6 @@
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import '../styles/layout.scss';
+import './Layout.scss';
 
 enum PageName {
   HOME = '/',

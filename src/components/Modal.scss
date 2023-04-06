@@ -1,4 +1,4 @@
-.character-modal {
+.modal {
     &_wrapper {
         position: fixed;
         top: 0;
@@ -20,7 +20,7 @@
 }
 
 @media (max-width: 700px) {
-    .character-modal {
+    .modal {
        width: 70vw;
         padding: 7%;
     }

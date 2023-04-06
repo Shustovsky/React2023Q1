@@ -1,4 +1,4 @@
-import '../styles/characterModal.scss';
+import './Modal.scss';
 import React from 'react';
 
 interface ModalProps {
@@ -12,8 +12,8 @@ export const Modal = ({ children, onClose }: ModalProps): JSX.Element => {
   };
 
   return (
-    <div className="character-modal_wrapper" onClick={onClose}>
-      <div className="character-modal" onClick={handleProductItemClick}>
+    <div className="modal_wrapper" onClick={onClose}>
+      <div className="modal" onClick={handleProductItemClick}>
         <span className="close" onClick={onClose}>
           &times;
         </span>

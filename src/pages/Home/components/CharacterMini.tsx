@@ -1,5 +1,5 @@
 import { ICharacter } from '../../../models';
-import '../../../styles/character.scss';
+import './Character.scss';
 
 interface CharacterProps {
   character: ICharacter;

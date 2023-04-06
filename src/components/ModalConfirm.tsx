@@ -1,4 +1,4 @@
-import '../styles/feedbackModal.scss';
+import './ModalConfirm.scss';
 
 interface ModalConfirmProps {
   label: string;
@@ -8,9 +8,9 @@ interface ModalConfirmProps {
 export function ModalConfirm({ label, onClose }: ModalConfirmProps): JSX.Element {
   return (
     <div>
-      <div className="modal">
+      <div className="modal-confirm">
         {label}
-        <div className="modal-content">
+        <div className="modal-confirm_content">
           <span className="close" onClick={onClose}>
             &times;
           </span>

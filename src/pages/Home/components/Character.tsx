@@ -1,4 +1,4 @@
-import '../../../styles/character.scss';
+import './Character.scss';
 import { ICharacter } from '../../../models';
 
 interface CharacterProps {

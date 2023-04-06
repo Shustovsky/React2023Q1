@@ -1,7 +1,7 @@
 import React from 'react';
 import { IFeedback } from '../../../models';
 import { Validator } from '../../../ValidationService';
-import '../../../styles/inputs.scss';
+import './Inputs.scss';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {

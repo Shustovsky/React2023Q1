@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import searchImg from '../../../assets/icons/icon-search.png';
-import '../../../styles/search.scss';
+import './Search.scss';
 
 interface SearchProps {
   onSearch: (searchValue: string) => Promise<void>;

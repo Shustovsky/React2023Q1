@@ -1,4 +1,4 @@
-import '../../../styles/feedback.scss';
+import './Feedback.scss';
 import { IFeedback } from '../../../models';
 
 interface FeedbackProps {
