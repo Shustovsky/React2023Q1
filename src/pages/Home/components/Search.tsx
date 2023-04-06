@@ -24,7 +24,7 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   return (
-    <form className="search-form" onSubmit={submitHandler}>
+    <div className="search-form" onSubmit={submitHandler}>
       <input
         type="text"
         className="search-form_input"
@@ -35,6 +35,6 @@ export function Search({ onSearch }: SearchProps) {
       <button className="search-form_btn" type="submit">
         <img src={searchImg} alt="search" />
       </button>
-    </form>
+    </div>
   );
 }
