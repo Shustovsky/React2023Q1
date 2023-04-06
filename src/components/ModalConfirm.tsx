@@ -1,7 +1,11 @@
-import { FeedbackModalProps } from '../models';
 import '../styles/feedbackModal.scss';
 
-export function ModalConfirm({ label, onClose }: FeedbackModalProps): JSX.Element {
+interface ModalConfirmProps {
+  label: string;
+  onClose: () => void;
+}
+
+export function ModalConfirm({ label, onClose }: ModalConfirmProps): JSX.Element {
   return (
     <div>
       <div className="modal">

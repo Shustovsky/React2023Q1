@@ -1,5 +1,10 @@
-import { CharacterProps } from '../../../models';
+import { ICharacter } from '../../../models';
 import '../../../styles/character.scss';
+
+interface CharacterProps {
+  character: ICharacter;
+  onClick?: () => void;
+}
 
 export function CharacterMini({ character, onClick }: CharacterProps): JSX.Element {
   return (

@@ -1,6 +1,3 @@
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import React from 'react';
-
 export interface ICharacter {
   id: number;
   name: string;
@@ -27,15 +24,6 @@ export interface IResponse {
   results: ICharacter[];
 }
 
-export interface CharacterProps {
-  character: ICharacter;
-  onClick?: () => void;
-}
-
-export interface ErrorMessageProps {
-  error: string;
-}
-
 export interface IFeedback {
   id: number;
   name: string;
@@ -46,24 +34,4 @@ export interface IFeedback {
   profilePicture: FileList;
   cute: boolean;
   checkbox: boolean;
-}
-
-export interface FeedbackProps {
-  feedback: IFeedback;
-}
-
-export interface NameInputProps {
-  label?: string;
-  register: UseFormRegister<IFeedback>;
-  errors?: FieldErrors<IFeedback>;
-}
-
-export interface FeedbackModalProps {
-  label: string;
-  onClose: () => void;
-}
-
-export interface ModalProps {
-  children: React.ReactNode;
-  onClose: () => void;
 }

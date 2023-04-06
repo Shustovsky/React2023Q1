@@ -1,6 +1,10 @@
 import '../styles/characterModal.scss';
-import { ModalProps } from '../models';
 import React from 'react';
+
+interface ModalProps {
+  children: React.ReactNode;
+  onClose: () => void;
+}
 
 export const Modal = ({ children, onClose }: ModalProps): JSX.Element => {
   const handleProductItemClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {

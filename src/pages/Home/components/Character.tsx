@@ -1,5 +1,10 @@
-import { CharacterProps } from '../../../models';
 import '../../../styles/character.scss';
+import { ICharacter } from '../../../models';
+
+interface CharacterProps {
+  character: ICharacter;
+  onClick?: () => void;
+}
 
 export function Character({ character }: CharacterProps): JSX.Element {
   return (

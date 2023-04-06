@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { FeedbackModalProps } from '../models';
 import { ModalConfirm } from '../components/ModalConfirm';
 
+interface ModalConfirmProps {
+  label: string;
+  onClose: () => void;
+}
+
 describe('Modal component', () => {
-  const testModal: FeedbackModalProps = {
+  const testModal: ModalConfirmProps = {
     label: 'Review successfully added',
     onClose: () => {},
   };
