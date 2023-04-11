@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ModalConfirm } from '../components/ModalConfirm';
+import { Provider } from 'react-redux';
+import { testStore } from './testStore/testStore';
 
 interface ModalConfirmProps {
   label: string;
@@ -13,7 +15,11 @@ describe('Modal component', () => {
   };
 
   test('renders modal correctly', () => {
-    render(<ModalConfirm label={testModal.label} onClose={testModal.onClose} />);
+    render(
+      <Provider store={testStore}>
+        <ModalConfirm label={testModal.label} />
+      </Provider>
+    );
 
     expect(screen.getByText(`Review successfully added`)).toBeInTheDocument();
   });

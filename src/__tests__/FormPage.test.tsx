@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { FormPage } from '../pages/Form/FormPage';
+import { Provider } from 'react-redux';
+import { testStore } from './testStore/testStore';
 
 test('renders form page', () => {
-  render(<FormPage />);
+  render(
+    <Provider store={testStore}>
+      <FormPage />
+    </Provider>
+  );
   expect(screen.getByText('Please leave a rating for this site:')).toBeInTheDocument();
   expect(screen.getByLabelText('Your name:')).toBeInTheDocument();
   expect(screen.getByLabelText('Birthday:')).toBeInTheDocument();
