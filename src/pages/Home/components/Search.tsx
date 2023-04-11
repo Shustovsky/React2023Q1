@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
 import searchImg from '../../../assets/icons/icon-search.png';
 import './Search.scss';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../../hook';
+import { setSearchValue } from '../../../store/searchSlice';
 
 interface SearchProps {
   onSearch: (searchValue: string) => Promise<void>;
 }
 
 export function Search({ onSearch }: SearchProps) {
-  const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('search') || '');
-
-  useEffect(() => {
-    localStorage.setItem('search', searchValue);
-  }, [searchValue]);
+  const dispatch = useDispatch();
+  const searchValue = useAppSelector((state) => state.search.searchValue);
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     await onSearch(searchValue);
-    localStorage.setItem('search', searchValue);
   };
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchValue(event.target.value);
+    dispatch(setSearchValue(event.target.value));
   };
 
   return (

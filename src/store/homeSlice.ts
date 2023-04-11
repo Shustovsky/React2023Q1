@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICharacter } from '../models';
 
 export interface HomeState {
@@ -19,16 +19,16 @@ export const homeSlice = createSlice({
   name: 'home',
   initialState: initialState,
   reducers: {
-    setCharacters: (state, action) => {
+    setCharacters: (state, action: PayloadAction<ICharacter[]>) => {
       state.characters = action.payload;
     },
-    setLoading: (state, action) => {
+    setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
-    setError: (state, action) => {
+    setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
-    setCharacter: (state, action) => {
+    setCharacter: (state, action: PayloadAction<ICharacter | null>) => {
       state.character = action.payload;
     },
   },

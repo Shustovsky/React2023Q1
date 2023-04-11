@@ -17,6 +17,7 @@ export function HomePage(): JSX.Element {
   const loading = useAppSelector((state) => state.home.loading);
   const error = useAppSelector((state) => state.home.error);
   const character = useAppSelector((state) => state.home.character);
+  const searchValue = useAppSelector((state) => state.search.searchValue);
 
   const fetchData = useCallback(
     async (searchValue: string): Promise<void> => {
@@ -44,9 +45,8 @@ export function HomePage(): JSX.Element {
   );
 
   useEffect(() => {
-    const searchValue = localStorage.getItem('search') || '';
     fetchData(searchValue);
-  }, [fetchData]);
+  }, [fetchData, searchValue]);
 
   const handleSearch = (searchValue: string): Promise<void> => {
     return fetchData(searchValue);
