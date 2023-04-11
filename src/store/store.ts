@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import homeReducer from './homeSlice';
+import feedbackReducer from './formSlice';
 
 export const store = configureStore({
   reducer: {
     home: homeReducer,
+    feedback: feedbackReducer,
   },
 });
 

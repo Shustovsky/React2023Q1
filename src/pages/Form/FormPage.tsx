@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Feedback } from './components/Feedback';
 import { ModalConfirm } from '../../components/ModalConfirm';
 import {
@@ -14,10 +13,13 @@ import {
 import { IFeedback } from '../../models';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './components/FormPage.scss';
+import { useAppDispatch, useAppSelector } from '../../hook';
+import { setFeedbackList, setShowFeedbackModal } from '../../store/formSlice';
 
 export function FormPage() {
-  const [feedbackList, setFeedbackList] = useState<IFeedback[]>([]);
-  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const dispatch = useAppDispatch();
+  const feedbackList = useAppSelector((state) => state.feedback.feedbackList);
+  const showFeedbackModal = useAppSelector((state) => state.feedback.showFeedbackModal);
 
   const {
     register,
@@ -41,11 +43,10 @@ export function FormPage() {
       cute: data.cute,
       checkbox: false,
     };
-    setFeedbackList([...feedbackList, newFeedback]);
-
-    setShowFeedbackModal(true);
+    dispatch(setFeedbackList(newFeedback));
+    dispatch(setShowFeedbackModal(true));
     setTimeout(() => {
-      setShowFeedbackModal(false);
+      dispatch(setShowFeedbackModal(false));
     }, 4000);
 
     reset();
@@ -78,14 +79,7 @@ export function FormPage() {
         {feedbackList &&
           feedbackList.map((feedback) => <Feedback feedback={feedback} key={feedback.id} />)}
       </section>
-      {showFeedbackModal && (
-        <ModalConfirm
-          label={'Review successfully added'}
-          onClose={() => {
-            setShowFeedbackModal(false);
-          }}
-        />
-      )}
+      {showFeedbackModal && <ModalConfirm label={'Review successfully added'} />}
     </>
   );
 }
