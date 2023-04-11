@@ -1,12 +1,13 @@
 import './Character.scss';
-import { ICharacter } from '../../../models';
+import { useAppSelector } from '../../../hook';
 
-interface CharacterProps {
-  character: ICharacter;
-  onClick?: () => void;
-}
+export function Character(): JSX.Element | null {
+  const character = useAppSelector((state) => state.home.character);
 
-export function Character({ character }: CharacterProps): JSX.Element {
+  if (!character) {
+    return null;
+  }
+
   return (
     <div className="character_item">
       <div>
