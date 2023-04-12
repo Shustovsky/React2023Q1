@@ -12,23 +12,23 @@ export function Search({ onSearch }: SearchProps) {
   const dispatch = useDispatch();
   const searchValue = useAppSelector((state) => state.search.searchValue);
 
-  const submitHandler = async (e: React.FormEvent): Promise<void> => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     await onSearch(searchValue);
   };
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch(setSearchValue(event.target.value));
   };
 
   return (
-    <form className="search-form" onSubmit={submitHandler}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="search-form_input"
         placeholder="site search"
         value={searchValue}
-        onChange={changeHandler}
+        onChange={handleChange}
       />
       <button className="search-form_btn" type="submit">
         <img src={searchImg} alt="search" />
