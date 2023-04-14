@@ -1,8 +1,8 @@
-import searchImg from '../../../assets/icons/icon-search.png';
-import './Search.scss';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../../hook';
 import { setSearchValue } from '../../../store/searchSlice';
+import searchImg from '../../../assets/icons/icon-search.png';
+import './Search.scss';
 
 interface SearchProps {
   onSearch: (searchValue: string) => Promise<void>;

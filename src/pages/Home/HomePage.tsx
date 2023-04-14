@@ -46,7 +46,8 @@ export function HomePage(): JSX.Element {
 
   useEffect(() => {
     fetchData(searchValue);
-  }, [fetchData, searchValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchData]);
 
   const handleSearch = (searchValue: string): Promise<void> => {
     return fetchData(searchValue);
