@@ -1,14 +1,13 @@
-import axios, { AxiosError } from 'axios';
 import { CharacterMini } from './components/CharacterMini';
 import { Search } from './components/Search';
 import { Loader } from '../../components/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { Modal } from '../../components/Modal';
 import { Character } from './components/Character';
-import { useEffect, useCallback } from 'react';
-import { ICharacter, IResponse } from '../../models';
+import { useEffect } from 'react';
+import { ICharacter } from '../../models';
 import './components/HomePage.scss';
-import { setCharacters, setError, setLoading } from '../../store/homeSlice';
+import { fetchDataNew } from '../../store/homeSlice';
 import { useAppDispatch, useAppSelector } from '../../hook';
 
 export function HomePage(): JSX.Element {
@@ -19,38 +18,13 @@ export function HomePage(): JSX.Element {
   const character = useAppSelector((state) => state.home.character);
   const searchValue = useAppSelector((state) => state.search.searchValue);
 
-  const fetchData = useCallback(
-    async (searchValue: string): Promise<void> => {
-      dispatch(setLoading(true));
-      dispatch(setError(''));
-
-      try {
-        const response = await axios.get<IResponse>(
-          `https://rickandmortyapi.com/api/character/?name=${searchValue}`
-        );
-        dispatch(setCharacters(response.data.results));
-      } catch (e: unknown) {
-        const error = e as AxiosError;
-        if (error.response?.status === 404) {
-          dispatch(setError('Oops nothing found, try changing the search parameter!'));
-        } else {
-          dispatch(setError(error.message));
-        }
-        dispatch(setCharacters([]));
-      } finally {
-        dispatch(setLoading(false));
-      }
-    },
-    [dispatch]
-  );
-
   useEffect(() => {
-    fetchData(searchValue);
+    dispatch(fetchDataNew(searchValue));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetchData]);
+  }, [dispatch]);
 
-  const handleSearch = (searchValue: string): Promise<void> => {
-    return fetchData(searchValue);
+  const handleSearch = (searchValue: string) => {
+    dispatch(fetchDataNew(searchValue));
   };
 
   return (

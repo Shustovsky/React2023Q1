@@ -5,7 +5,7 @@ import searchImg from '../../../assets/icons/icon-search.png';
 import './Search.scss';
 
 interface SearchProps {
-  onSearch: (searchValue: string) => Promise<void>;
+  onSearch: (searchValue: string) => void;
 }
 
 export function Search({ onSearch }: SearchProps) {
