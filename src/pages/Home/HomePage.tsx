@@ -12,10 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../hook';
 
 export function HomePage(): JSX.Element {
   const dispatch = useAppDispatch();
-  const characters = useAppSelector((state) => state.home.characters);
-  const loading = useAppSelector((state) => state.home.loading);
-  const error = useAppSelector((state) => state.home.error);
-  const character = useAppSelector((state) => state.home.character);
+  const { characters, loading, error, character } = useAppSelector((state) => state.home);
   const searchValue = useAppSelector((state) => state.search.searchValue);
 
   useEffect(() => {
