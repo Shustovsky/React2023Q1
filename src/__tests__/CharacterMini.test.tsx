@@ -33,7 +33,7 @@ describe('Character component', () => {
   test('renders character info correctly', () => {
     render(
       <Provider store={testStore}>
-        <CharacterMini character={testCharacter} />
+        <CharacterMini character={testCharacter} onClick={() => ''} />
       </Provider>
     );
 

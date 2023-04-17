@@ -7,7 +7,7 @@ import { Character } from './components/Character';
 import { useEffect } from 'react';
 import { ICharacter } from '../../models';
 import './components/HomePage.scss';
-import { fetchDataNew } from '../../store/homeSlice';
+import { fetchDataNew, setCharacter } from '../../store/homeSlice';
 import { useAppDispatch, useAppSelector } from '../../hook';
 
 export function HomePage(): JSX.Element {
@@ -35,13 +35,17 @@ export function HomePage(): JSX.Element {
         {error && <ErrorMessage />}
         <section className="character">
           {characters.map((character: ICharacter) => (
-            <CharacterMini character={character} key={character.id} />
+            <CharacterMini
+              character={character}
+              onClick={() => dispatch(setCharacter(character))}
+              key={character.id}
+            />
           ))}
         </section>
       </main>
       {character && (
         <Modal>
-          <Character />
+          <Character character={character} />
         </Modal>
       )}
     </>

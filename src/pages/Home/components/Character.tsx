@@ -1,13 +1,11 @@
+import { ICharacter } from '../../../models';
 import './Character.scss';
-import { useAppSelector } from '../../../hook';
 
-export function Character(): JSX.Element | null {
-  const character = useAppSelector((state) => state.home.character);
+interface CharacterProps {
+  character: ICharacter;
+}
 
-  if (!character) {
-    return null;
-  }
-
+export function Character({ character }: CharacterProps): JSX.Element {
   return (
     <div className="character_item">
       <div>

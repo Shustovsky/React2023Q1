@@ -1,16 +1,14 @@
 import { ICharacter } from '../../../models';
 import './Character.scss';
-import { setCharacter } from '../../../store/homeSlice';
-import { useAppDispatch } from '../../../hook';
 
 interface CharacterProps {
   character: ICharacter;
+  onClick: () => void;
 }
 
-export function CharacterMini({ character }: CharacterProps): JSX.Element {
-  const dispatch = useAppDispatch();
+export function CharacterMini({ character, onClick }: CharacterProps): JSX.Element {
   return (
-    <div className="character_item" onClick={() => dispatch(setCharacter(character))}>
+    <div className="character_item" onClick={onClick}>
       <img src={character.image} alt={character.name} />
       <div className="character_item_name">{character.name}</div>
     </div>
