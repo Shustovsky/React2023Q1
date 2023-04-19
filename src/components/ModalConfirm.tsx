@@ -1,13 +1,24 @@
-import { FeedbackModalProps } from '../models';
-import '../styles/feedbackModal.scss';
+import './ModalConfirm.scss';
+import { setShowFeedbackModal } from '../store/formSlice';
+import { useAppDispatch } from '../hook';
 
-export function ModalConfirm({ label, onClose }: FeedbackModalProps): JSX.Element {
+interface ModalConfirmProps {
+  label: string;
+}
+
+export function ModalConfirm({ label }: ModalConfirmProps): JSX.Element {
+  const dispatch = useAppDispatch();
   return (
     <div>
-      <div className="modal">
+      <div className="modal-confirm">
         {label}
-        <div className="modal-content">
-          <span className="close" onClick={onClose}>
+        <div className="modal-confirm_content">
+          <span
+            className="close"
+            onClick={() => {
+              dispatch(setShowFeedbackModal(false));
+            }}
+          >
             &times;
           </span>
         </div>

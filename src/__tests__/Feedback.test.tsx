@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { IFeedback } from '../models';
-import { Feedback } from '../components/Feedback';
+import { Feedback } from '../pages/Form/components/Feedback';
 import { vitest } from 'vitest';
 
 describe('Feedback component', () => {

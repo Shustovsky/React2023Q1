@@ -1,13 +1,16 @@
 import React from 'react';
-import { NameInputProps } from '../models';
-import { Validator } from '../ValidationService';
-import '../styles/inputs.scss';
+import { IFeedback } from '../../../models';
+import { Validator } from '../../../ValidationService';
+import './Inputs.scss';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
-export const CheckboxInput: React.FC<NameInputProps> = ({
-  label,
-  register,
-  errors,
-}): JSX.Element => {
+interface InputProps {
+  label?: string;
+  register: UseFormRegister<IFeedback>;
+  errors?: FieldErrors<IFeedback>;
+}
+
+export const CheckboxInput: React.FC<InputProps> = ({ label, register, errors }): JSX.Element => {
   return (
     <div>
       <label>
@@ -26,7 +29,7 @@ export const CheckboxInput: React.FC<NameInputProps> = ({
   );
 };
 
-export const DateInput: React.FC<NameInputProps> = ({ label, register, errors }): JSX.Element => {
+export const DateInput: React.FC<InputProps> = ({ label, register, errors }): JSX.Element => {
   const validator = new Validator();
   return (
     <div>
@@ -47,11 +50,7 @@ export const DateInput: React.FC<NameInputProps> = ({ label, register, errors })
   );
 };
 
-export const DropdownInput: React.FC<NameInputProps> = ({
-  label,
-  register,
-  errors,
-}): JSX.Element => {
+export const DropdownInput: React.FC<InputProps> = ({ label, register, errors }): JSX.Element => {
   const validator = new Validator();
   return (
     <div>
@@ -75,7 +74,7 @@ export const DropdownInput: React.FC<NameInputProps> = ({
   );
 };
 
-export const NameInput: React.FC<NameInputProps> = ({ label, register, errors }): JSX.Element => {
+export const NameInput: React.FC<InputProps> = ({ label, register, errors }): JSX.Element => {
   return (
     <div>
       <label>
@@ -92,11 +91,7 @@ export const NameInput: React.FC<NameInputProps> = ({ label, register, errors })
   );
 };
 
-export const PictureInput: React.FC<NameInputProps> = ({
-  label,
-  register,
-  errors,
-}): JSX.Element => {
+export const PictureInput: React.FC<InputProps> = ({ label, register, errors }): JSX.Element => {
   const validator = new Validator();
   return (
     <div>
@@ -117,7 +112,7 @@ export const PictureInput: React.FC<NameInputProps> = ({
   );
 };
 
-export const RadioInput: React.FC<NameInputProps> = ({ register, errors }): JSX.Element => {
+export const RadioInput: React.FC<InputProps> = ({ register, errors }): JSX.Element => {
   return (
     <div>
       <label>
@@ -145,7 +140,7 @@ export const RadioInput: React.FC<NameInputProps> = ({ register, errors }): JSX.
   );
 };
 
-export const SwitcherInput: React.FC<NameInputProps> = ({ label, register }): JSX.Element => {
+export const SwitcherInput: React.FC<InputProps> = ({ label, register }): JSX.Element => {
   return (
     <div>
       <label>
@@ -157,7 +152,7 @@ export const SwitcherInput: React.FC<NameInputProps> = ({ label, register }): JS
   );
 };
 
-export const Textarea: React.FC<NameInputProps> = ({ label, register, errors }): JSX.Element => {
+export const Textarea: React.FC<InputProps> = ({ label, register, errors }): JSX.Element => {
   return (
     <div>
       <label>

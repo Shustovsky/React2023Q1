@@ -2,12 +2,16 @@ import { describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from '../App';
+import { Provider } from 'react-redux';
+import { testStore } from './testStore/testStore';
 
 describe('App', () => {
   it('Renders page', () => {
     render(
       <BrowserRouter>
-        <App />
+        <Provider store={testStore}>
+          <App />
+        </Provider>
       </BrowserRouter>
     );
     expect(

@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { ICharacter } from '../models';
-import { CharacterMini } from '../components/CharacterMini';
+import { CharacterMini } from '../pages/Home/components/CharacterMini';
+import { Provider } from 'react-redux';
+import { testStore } from './testStore/testStore';
 
 describe('Character component', () => {
   const testCharacter: ICharacter = {
@@ -29,7 +31,11 @@ describe('Character component', () => {
   };
 
   test('renders character info correctly', () => {
-    render(<CharacterMini character={testCharacter} onClick={() => null} />);
+    render(
+      <Provider store={testStore}>
+        <CharacterMini character={testCharacter} onClick={() => ''} />
+      </Provider>
+    );
 
     expect(screen.getByText(testCharacter.name)).toBeInTheDocument();
     expect(screen.getByAltText(testCharacter.name)).toBeInTheDocument();

@@ -1,5 +1,9 @@
-import { FeedbackProps } from '../models';
-import '../styles/feedback.scss';
+import './Feedback.scss';
+import { IFeedback } from '../../../models';
+
+interface FeedbackProps {
+  feedback: IFeedback;
+}
 
 export function Feedback({ feedback }: FeedbackProps): JSX.Element {
   return (
