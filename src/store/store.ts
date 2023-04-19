@@ -9,6 +9,13 @@ export const store = configureStore({
     feedback: feedbackReducer,
     search: searchReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['feedback/setFeedbackList'],
+        ignoredPaths: ['feedback.feedbackList'],
+      },
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
