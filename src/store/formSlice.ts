@@ -6,7 +6,7 @@ export interface FeedbackState {
   showFeedbackModal: boolean;
 }
 
-const initialState: FeedbackState = {
+export const initialState: FeedbackState = {
   feedbackList: [],
   showFeedbackModal: false,
 };
@@ -17,6 +17,7 @@ export const feedbackSlice = createSlice({
   reducers: {
     setFeedbackList: (state, action: PayloadAction<IFeedback>) => {
       state.feedbackList.push(action.payload);
+      console.log(action.payload);
     },
     setShowFeedbackModal: (state, action: PayloadAction<boolean>) => {
       state.showFeedbackModal = action.payload;

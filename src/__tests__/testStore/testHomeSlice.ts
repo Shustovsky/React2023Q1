@@ -8,34 +8,32 @@ export interface HomeState {
   character: ICharacter | null;
 }
 
-const initialState: HomeState = {
-  characters: [],
-  loading: false,
-  error: 'Some error',
-  character: {
-    id: 2,
-    name: 'Morty Smith',
-    status: 'Alive',
-    species: 'Human',
-    type: '',
-    gender: 'Male',
-    origin: {
-      name: 'Earth',
-      url: 'https://rickandmortyapi.com/api/location/1',
-    },
-    location: {
-      name: 'Earth',
-      url: 'https://rickandmortyapi.com/api/location/20',
-    },
-    image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    episode: [
-      'https://rickandmortyapi.com/api/episode/1',
-      'https://rickandmortyapi.com/api/episode/2',
-      // ...
-    ],
-    url: 'https://rickandmortyapi.com/api/character/2',
-    created: '2017-11-04T18:50:21.651Z',
+const testCharacter = {
+  id: 302,
+  name: 'Ruben',
+  status: 'Dead',
+  species: 'Human',
+  type: '',
+  gender: 'Male',
+  origin: {
+    name: 'Earth (C-137)',
+    url: 'https://rickandmortyapi.com/api/location/1',
   },
+  location: {
+    name: 'Earth (C-137)',
+    url: 'https://rickandmortyapi.com/api/location/1',
+  },
+  image: 'https://rickandmortyapi.com/api/character/avatar/302.jpeg',
+  episode: ['https://rickandmortyapi.com/api/episode/3'],
+  url: 'https://rickandmortyapi.com/api/character/302',
+  created: '2018-01-05T14:03:21.824Z',
+};
+
+const initialState: HomeState = {
+  characters: [testCharacter],
+  loading: true,
+  error: 'Some error',
+  character: testCharacter,
 };
 
 export const testHomeSlice = createSlice({
