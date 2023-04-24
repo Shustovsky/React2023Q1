@@ -7,7 +7,7 @@ import { ViteDevServer, createServer as createViteServer } from 'vite';
 
 const resolve = (p: string) => path.resolve(__dirname, p);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const port = 5557;
+const port = 5555;
 const isProd = !process.env.NODE_ENV;
 
 async function createServer() {
