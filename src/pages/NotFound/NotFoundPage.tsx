@@ -1,3 +1,3 @@
 export function NotFoundPage(): JSX.Element {
-  return <main> Not found</main>;
+  return <main>Not found</main>;
 }
