@@ -1,3 +1,3 @@
 export function AboutPage(): JSX.Element {
-  return <main> About</main>;
+  return <main>About</main>;
 }

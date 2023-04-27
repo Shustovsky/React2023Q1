@@ -8,7 +8,7 @@ export interface HomeState {
   character: ICharacter | null;
 }
 
-const initialState: HomeState = {
+export const initialState: HomeState = {
   characters: [],
   loading: false,
   error: '',
@@ -23,7 +23,6 @@ export const fetchDataNew = createAsyncThunk<ICharacter[], string, { rejectValue
       return rejectWithValue(response.status.toString());
     }
     const data = await response.json();
-
     return data.results;
   }
 );

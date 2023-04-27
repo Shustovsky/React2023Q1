@@ -13,10 +13,14 @@ export const Modal = ({ children }: ModalProps): JSX.Element => {
   };
   const dispatch = useDispatch();
 
+  const closeModal = () => {
+    dispatch(setCharacter(null));
+  };
+
   return (
-    <div className="modal_wrapper" onClick={() => dispatch(setCharacter(null))}>
+    <div className="modal_wrapper" onClick={closeModal}>
       <div className="modal" onClick={handleProductItemClick}>
-        <span className="close" onClick={() => dispatch(setCharacter(null))}>
+        <span className="close" onClick={closeModal}>
           &times;
         </span>
         {children}
